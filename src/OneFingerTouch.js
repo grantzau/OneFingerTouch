@@ -160,7 +160,7 @@ var OneFingerTouch = (function(){
             this.stored.oldPageX = touch[pageX];
             this.stored.oldPageY = touch[pageY];            
             
-            // deltaMaxX is stored by _moveTouch()
+            // deltaMaxX, deltaMaxY are stored by _moveTouch()
             // startX, startY are stored by _resetDirection()
         },
 
@@ -172,6 +172,8 @@ var OneFingerTouch = (function(){
             this.stored.deltaY = this.stored.deltaMaxX = this.stored.deltaMaxY =
             this.stored.distanceX = this.stored.distanceY = this.stored.distance =
             this.stored.oldPageX = this.stored.oldPageY = 0;
+
+			// deltaMaxX, deltaMaxY are also reset by _resetDirection()
         },
         
         // Handle events
@@ -257,9 +259,16 @@ var OneFingerTouch = (function(){
             event.initEvent('onefingertouch-' + type, true, true);
             event.onefingertouch = this.touch;
 
+			// consider one event for all types:
+			//
+			// event.initEvent('onefingertouch', true, true);
+			// event.onefingertouch = {type: type, touch: this.touch};
+			
+			// enable history, could go here ? e.g.:
+			// 
+			// history.push(event.onefingertouch);
+
             this.context.dispatchEvent(event);
-            
-            console.log(type + ' => ' + this.touch.direction );
         },
 
         // Where's the finger going
