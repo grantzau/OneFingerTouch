@@ -1,0 +1,1 @@
+new OneFingerTouch('#touch');
