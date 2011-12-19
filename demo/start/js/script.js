@@ -1,3 +1,4 @@
-var touch = new OneFingerTouch('#touch');
+var touchEl = document.getElementById('touch');
+var touchTracker = new OneFingerTouch(touchEl);
 
-document.getElementById('touch').addEventListener('onefingertouch-start', function(e){ console.log(e.onefingertouch); });
+touchEl.addEventListener('onefingertouch-start', function(e){ console.log(e.onefingertouch); });

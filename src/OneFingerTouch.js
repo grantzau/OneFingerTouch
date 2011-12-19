@@ -173,7 +173,7 @@ var OneFingerTouch = (function(){
             this.stored.distanceX = this.stored.distanceY = this.stored.distance =
             this.stored.oldPageX = this.stored.oldPageY = 0;
 
-			// deltaMaxX, deltaMaxY are also reset by _resetDirection()
+            // deltaMaxX, deltaMaxY are also reset by _resetDirection()
         },
         
         // Handle events
@@ -259,14 +259,14 @@ var OneFingerTouch = (function(){
             event.initEvent('onefingertouch-' + type, true, true);
             event.onefingertouch = this.touch;
 
-			// consider one event for all types:
-			//
-			// event.initEvent('onefingertouch', true, true);
-			// event.onefingertouch = {type: type, touch: this.touch};
-			
-			// enable history, could go here ? e.g.:
-			// 
-			// history.push(event.onefingertouch);
+            // consider one event for all types:
+            //
+            // event.initEvent('onefingertouch', true, true);
+            // event.onefingertouch = {type: type, touch: this.touch};
+            
+            // enable history, could go here ? e.g.:
+            // 
+            // history.push(event.onefingertouch);
 
             this.context.dispatchEvent(event);
         },
