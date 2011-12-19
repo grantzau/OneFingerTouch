@@ -12,7 +12,7 @@ The number of pixels it takes, before we count on the movement as "intended" by 
 
 ### delayFilter
 
-On multi-touch devices it often happens, that the user touches the screen with a second finger just after lifting the first finger. By ignoring touches within a short period of time, after ending another touch, we can avoid mistakes. 500 ms is what I have tested to be the most reliable.
+On touch devices it often happens, that the user touches the screen with a second finger just after lifting the first finger. By ignoring touches within a short period of time, after ending another touch, we can avoid mistakes. 500 ms is what I have tested to be the most reliable.
 
 ### tapDuration
 
