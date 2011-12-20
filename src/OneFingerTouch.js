@@ -136,7 +136,7 @@ var OneFingerTouch = (function(){
         _getChangedTouchByIdentifier: function(event){
             var touch = null;
 
-            if (event.changedTouches[0].identifier){
+            if (event.changedTouches && event.changedTouches[0].identifier){
                 for (var i in event.changedTouches){
                     if (event.changedTouches[i].identifier && event.changedTouches[i].identifier == this.stored.identifier){
                         touch = event.changedTouches[i];
