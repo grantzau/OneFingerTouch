@@ -20,7 +20,7 @@ As with "delayFilter", this option helps us avoid any mistaken touches. To make 
 
 # Usage
 
-https://github.com/grantzau/OneFingerTouch/blob/master/demo/start/js/script.js
+https://github.com/grantzau/OneFingerTouch/blob/master/demo/simple/js/script.js
 
 More demos and help will follow.
 

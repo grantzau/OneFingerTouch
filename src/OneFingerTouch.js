@@ -252,7 +252,7 @@ var OneFingerTouch = (function(){
 
         _fireEvent: function(type){
             var event;
-			var log = type;
+            var log = type;
 
             // Construct event, depending on options.eventLevel
             switch (this.options.eventLevel){
@@ -261,10 +261,10 @@ var OneFingerTouch = (function(){
                 case 0:
                     if (type == 'end' && !this.touch.ignore && this.touch.direction){
                         event = document.createEvent("Event");
-                        event.initEvent('onefingertouch-' + this.touch.direction, true, true);
+                        event.initEvent('onefingertouch', true, true);
                         event.onefingertouch = this.touch;
-						
-						log = this.touch.direction;
+                        
+                        log = this.touch.direction;
                     }
                     break;
                     
