@@ -20,7 +20,8 @@ var OneFingerTouch = (function(){
                 tapDuration: 50,
                 calcSpeed: false,
                 calcDistance: false,
-                enableHistory: false
+                enableHistory: false,
+				debug: false
             };
 
             // User defined options
@@ -173,19 +174,19 @@ var OneFingerTouch = (function(){
         handleEvent: function(event){
             switch (event.type){
                 case startEvent:
-                    console.log('start');
+                    this._log('start');
                     this._start(event);
                     break;
                 case moveEvent:
-                    console.log('move');
+                    this._log('move');
                     this._move(event);
                     break;
                 case cancelEvent:
-                    console.log('cancel');
+                    this._log('cancel');
                     this._cancel(event);
                     break;
                 case endEvent:
-                    console.log('end');
+                    this._log('end');
                     this._end(event);
                     break;
             }
@@ -262,7 +263,7 @@ var OneFingerTouch = (function(){
             // 
             // history.push(event.onefingertouch);
 
-            console.log('__' + type);
+            this._log('_' + type);
             this.context.dispatchEvent(event);
         },
 
@@ -352,7 +353,12 @@ var OneFingerTouch = (function(){
                 return Y > 0 && X > 0 && A >= 30 && A <= 60;
             }
 
-        }
+        },
+
+		// Debugging
+		_log: function(log){
+			if (this.options.debug) console.log(log);
+		}
     };
     
     return OneFingerTouch;
