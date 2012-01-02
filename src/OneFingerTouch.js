@@ -6,9 +6,9 @@ var OneFingerTouch = (function(){
         cancelEvent = hasTouch ? 'touchcancel' : 'mouseup',
         pageX = hasTouch ? 'pageX' : 'clientX',
         pageY = hasTouch ? 'pageY' : 'clientY',
-		options = {
-			touching: false
-		},
+        options = {
+            touching: false
+        },
         
         OneFingerTouch = function(el, options){         
             this.context = typeof el == 'string' ? document.querySelector(el) : el;
@@ -69,7 +69,7 @@ var OneFingerTouch = (function(){
             this._resetStored();
 
             this.touch = {
-				identifier: touch.identifier,
+                identifier: touch.identifier,
                 startTime: this.stored.time,
                 delay: this.stored.delay,
                 ignore: null,
@@ -134,11 +134,11 @@ var OneFingerTouch = (function(){
             this.touch.duration = Date.now() - this.touch.startTime;
 
             if (this.touch.direction == 'tap' && this.touch.duration < this.options.tapDuration){
-				this.touch.direction = null;
-				this.touch.ignore = 'tapDuration';
-			}
-			
-			options.touching = false;
+                this.touch.direction = null;
+                this.touch.ignore = 'tapDuration';
+            }
+            
+            options.touching = false;
         },
 
         // Store touch values between touches
@@ -173,26 +173,26 @@ var OneFingerTouch = (function(){
         handleEvent: function(event){
             switch (event.type){
                 case startEvent:
-					console.log('start');
+                    console.log('start');
                     this._start(event);
                     break;
                 case moveEvent:
-					console.log('move');
+                    console.log('move');
                     this._move(event);
                     break;
                 case cancelEvent:
-					console.log('cancel');
+                    console.log('cancel');
                     this._cancel(event);
                     break;
                 case endEvent:
                     console.log('end');
-					this._end(event);
+                    this._end(event);
                     break;
             }
         },
         
         _start: function(event){
-			// Ignore if we are already tracking a finger
+            // Ignore if we are already tracking a finger
             if (options.touching) return this._ignoreTouch(event);
             
             if (this.options.stopPropagation) event.stopPropagation();
@@ -209,8 +209,8 @@ var OneFingerTouch = (function(){
         },
         
         _move: function(event){
-			// Ignore if more than one finger is touching
-			if (hasTouch && event.touches.length > 1) return this._ignoreTouch(event);
+            // Ignore if more than one finger is touching
+            if (hasTouch && event.touches.length > 1) return this._ignoreTouch(event);
 
             if (this.options.preventDefault) event.preventDefault();
             if (this.options.stopPropagation) event.stopPropagation();
@@ -226,10 +226,10 @@ var OneFingerTouch = (function(){
         },
         
         _end: function(event){
-			// If it's not the last finger ending the touch, 
-			// forward to _move() to find out where the first one has gone
-			if (hasTouch && event.touches.length) return this._move(event);
-			
+            // If it's not the last finger ending the touch, 
+            // forward to _move() to find out where the first one has gone
+            if (hasTouch && event.touches.length) return this._move(event);
+            
             if (this.options.stopPropagation) event.stopPropagation();
     
             this.context.removeEventListener(moveEvent, this, false);
@@ -262,7 +262,7 @@ var OneFingerTouch = (function(){
             // 
             // history.push(event.onefingertouch);
 
-			console.log('__' + type);
+            console.log('__' + type);
             this.context.dispatchEvent(event);
         },
 
