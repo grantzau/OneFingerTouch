@@ -21,7 +21,8 @@ var OneFingerTouch = (function(){
                 calcSpeed: false,
                 calcDistance: false,
                 enableHistory: false,
-				debug: false
+                debug: false,
+                eventLevel: 0
             };
 
             // User defined options
@@ -250,21 +251,46 @@ var OneFingerTouch = (function(){
         },
 
         _fireEvent: function(type){
-            var event = document.createEvent("Event");
-            event.initEvent('onefingertouch-' + type, true, true);
-            event.onefingertouch = this.touch;
+            var event;
+			var log = type;
 
-            // consider one event for all types:
-            //
-            // event.initEvent('onefingertouch', true, true);
-            // event.onefingertouch = {type: type, touch: this.touch};
+            // Construct event, depending on options.eventLevel
+            switch (this.options.eventLevel){
+                
+                // Direction/tap event
+                case 0:
+                    if (type == 'end' && !this.touch.ignore && this.touch.direction){
+                        event = document.createEvent("Event");
+                        event.initEvent('onefingertouch-' + this.touch.direction, true, true);
+                        event.onefingertouch = this.touch;
+						
+						log = this.touch.direction;
+                    }
+                    break;
+                    
+                // All internal events
+                case 1:
+                    event = document.createEvent("Event");
+                    event.initEvent('onefingertouch-' + type, true, true);
+                    event.onefingertouch = this.touch;
+                    break;
+                    
+                // All events to a single listener
+                case 2:
+                    event = document.createEvent("Event");
+                    event.initEvent('onefingertouch', true, true);
+                    event.onefingertouch = {type: type, touch: this.touch};
+                    break;
+            }
             
-            // enable history, could go here ? e.g.:
-            // 
-            // history.push(event.onefingertouch);
-
-            this._log('_' + type);
-            this.context.dispatchEvent(event);
+                // enable history, could go here ? e.g.:
+                // 
+                // history.push(event.onefingertouch);
+            
+            if (event){
+                this._log('_' + log);
+                this.context.dispatchEvent(event);
+            }
         },
 
         // Where's the finger going
@@ -355,10 +381,10 @@ var OneFingerTouch = (function(){
 
         },
 
-		// Debugging
-		_log: function(log){
-			if (this.options.debug) console.log(log);
-		}
+        // Debugging
+        _log: function(log){
+            if (this.options.debug) console.log(log);
+        }
     };
     
     return OneFingerTouch;
