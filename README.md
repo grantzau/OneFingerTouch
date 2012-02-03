@@ -1,6 +1,6 @@
 # Summary
 
-Get information about direction, distance and speed of a swipe from both mouse and touch events.
+Get information about the direction, distance and speed of a swipe from both mouse and touch events.
 
 ## Options
 
