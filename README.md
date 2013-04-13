@@ -1,8 +1,6 @@
-# OneFingerTouch
+# Summary
 
-Get information about direction, distance and speed of a swipe from both mouse and touch events.
-
-# Documentation
+Get information about the direction, distance and speed of a swipe from both mouse and touch events.
 
 ## Options
 
@@ -18,7 +16,7 @@ On touch devices it often happens, that the user touches the screen with a secon
 
 As with "delayFilter", this option helps us avoid any mistaken touches. To make sure, that the user is really "tapping", we expect the tap to last for at least some time. The default value is 50 ms.
 
-# Usage
+# Example
 
 https://github.com/grantzau/OneFingerTouch/blob/master/demo/simple/js/script.js
 
@@ -28,6 +26,5 @@ More demos and help will follow.
 
 Code inspired by:
 
-https://github.com/kamicane/mootools-touch
-
-https://github.com/cubiq/SwipeView
+(https://github.com/kamicane/mootools-touch)[https://github.com/kamicane/mootools-touch]
+(https://github.com/cubiq/SwipeView)[https://github.com/kamicane/mootools-touch]
